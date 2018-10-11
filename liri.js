@@ -42,6 +42,8 @@ for (var i = 3; i < nodeArgs.length; i++) {
 var userCommand = process.argv[2];
 //switch statement for commands
 function runliri() {
+
+
     switch (userCommand) {
         case "concert-this":
             //append userInput to log.txt
@@ -102,6 +104,7 @@ function runliri() {
             });
             break;
         case "spotify-this-song":
+            console.log("this hit")
             //if statement for no song provided
             if (!userInput) {
                 userInput = "The%20Sign";
@@ -161,7 +164,7 @@ function runliri() {
                 };
             });
             //run request to OMDB
-            var queryURL = "https://www.omdbapi.com/?i=" + userInput + "&y=&plot=short&apikey=trilogy"
+            var queryURL = "https://www.omdbapi.com/?t=" + userInput + "&y=&plot=short&apikey=" + process.env.OMDBKEY
             request(queryURL, function (error, response, body) {
                 if (!error && response.statusCode === 200) {
                     var info = JSON.parse(body);
@@ -190,16 +193,18 @@ function runliri() {
 if (userCommand == "do-what-it-says") {
     var fs = require("fs");
     //read random.txt file
+    console.log("hi");
     fs.readFile("random.txt", "utf8", function (error, data) {
         if (error) {
             return console.log(error)
         }
+        console.log(data);
         //split data into array
         var textArr = data.split(",");
-        userCommand = textArr[0];
+        userCommand = textArr[0].trim();
         userInput = textArr[1];
         prettyUserInput = userInput.replace(/%20/g, " ");
-        runLiri();
+        runliri();
     })
 }
 
