@@ -1,5 +1,5 @@
 //require dotnev npm to link Spotify keys file..
-require("dotnev").config();
+require("dotenv").config();
 
 //require keys.js file..
 var keys = require("./keys.js");
@@ -41,7 +41,7 @@ for (var i = 3; i < nodeArgs.length; i++) {
 
 var userCommand = process.argv[2];
 //switch statement for commands
-function runLiri() {
+function runliri() {
     switch (userCommand) {
         case "concert-this":
             //append userInput to log.txt
@@ -203,7 +203,7 @@ if (userCommand == "do-what-it-says") {
     })
 }
 
-runLiri();
+runliri();
                         
 
 
