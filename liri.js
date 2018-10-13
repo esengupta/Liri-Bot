@@ -43,7 +43,6 @@ var userCommand = process.argv[2];
 //switch statement for commands
 function runliri() {
 
-
     switch (userCommand) {
         case "concert-this":
             //append userInput to log.txt
